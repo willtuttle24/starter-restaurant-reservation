@@ -1,27 +1,25 @@
+/**
+ * Defines the router for reservation resources.
+ *
+ * @type {Router}
+ */
+
 const router = require("express").Router();
 const controller = require("./reservations.controller");
 const methodNotAllowed = require("../errors/methodNotAllowed");
-
 
 router
   .route("/")
   .get(controller.list)
   .post(controller.create)
   .all(methodNotAllowed);
-
-router
-  .route("/:reservationId")
+ router
+  .route("/:reservation_Id")
   .get(controller.read)
-  .put(controller.update)
-  .all(methodNotAllowed);
-
+  .put(controller.modify)
+  .all(methodNotAllowed); 
 router
-  .route("/:reservationId/status")
-  .put(controller.updateStatus)
-  .all(methodNotAllowed);
-
-router
-  .route("/:reservationId/edit")
+  .route("/:reservation_Id/status")
   .put(controller.update)
   .all(methodNotAllowed);
 
